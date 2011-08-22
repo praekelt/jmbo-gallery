@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from panya.admin import ModelBaseAdmin
+from jmbo.admin import ModelBaseAdmin
 
 from gallery.models import Gallery, GalleryImage, VideoEmbed, VideoFile
 

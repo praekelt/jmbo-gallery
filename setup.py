@@ -1,17 +1,17 @@
 from setuptools import setup, find_packages
 
 setup(
-    name='panya-gallery',
+    name='jmbo-gallery',
     version='0.0.2',
-    description='Panya gallery app.',
+    description='Jmbo gallery app.',
     long_description = open('README.rst', 'r').read(),
     author='Praekelt Foundation',
     author_email='dev@praekelt.com',
     license='BSD',
-    url='http://github.com/praekelt/panya-gallery',
+    url='http://github.com/praekelt/jmbo-gallery',
     packages = find_packages(),
     install_requires = [
-        'panya',
+        'jmbo',
     ],
     include_package_data=True,
     classifiers = [

@@ -5,8 +5,8 @@ from django.http import Http404, HttpResponse
 from django.template.loader import render_to_string
 
 from gallery.models import Gallery, GalleryItem
-from panya.generic.views import GenericObjectDetail, GenericObjectList 
-from panya.view_modifiers import DefaultViewModifier
+from jmbo.generic.views import GenericObjectDetail, GenericObjectList 
+from jmbo.view_modifiers import DefaultViewModifier
 
 from photologue.models import PhotoSize
 
