@@ -3,6 +3,7 @@ import re
 from django.core.urlresolvers import reverse
 from django.http import Http404, HttpResponse
 from django.template.loader import render_to_string
+from django.utils.translation import ugettext as _
 
 from gallery.models import Gallery, GalleryItem
 from jmbo.generic.views import GenericObjectDetail, GenericObjectList 
@@ -65,7 +66,7 @@ def gallery_item_ajax_galleriffic(request, slug):
 
 class ObjectList(GenericObjectList):
     def get_extra_context(self, *args, **kwargs):
-        return {'title': 'Galleries'}
+        return {'title': _('Galleries')}
         
     def get_view_modifier(self, request, *args, **kwargs):
         return DefaultViewModifier(request, *args, **kwargs)
@@ -83,7 +84,7 @@ class ObjectDetail(GenericObjectDetail):
         return Gallery.permitted.all()
     
     def get_extra_context(self, *args, **kwargs):
-        return {'title': 'Galleries'}
+        return {'title': _('Galleries')}
     
     def get_view_modifier(self, request, *args, **kwargs):
         return DefaultViewModifier(request, base_url=reverse("gallery_object_list"), ignore_defaults=True, *args, **kwargs)
