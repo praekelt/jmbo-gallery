@@ -4,4 +4,4 @@ include README.rst
 recursive-include gallery/fixtures *
 recursive-include gallery/media *
 recursive-include gallery/templates *
-recursive-include gallery/templatetags *
+recursive-include gallery/locale *
