@@ -1,6 +1,7 @@
-include AUTHORS
+include AUTHORS.rst
 include LICENSE
 include README.rst
+include CHANGELOG.rst
 recursive-include gallery/fixtures *
 recursive-include gallery/media *
 recursive-include gallery/templates *
