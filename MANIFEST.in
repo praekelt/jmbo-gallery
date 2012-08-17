@@ -6,3 +6,4 @@ recursive-include gallery/fixtures *
 recursive-include gallery/media *
 recursive-include gallery/templates *
 recursive-include gallery/locale *
+recursive-include gallery/static *
