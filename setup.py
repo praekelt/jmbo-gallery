@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='jmbo-gallery',
-    version='0.0.3',
+    version='0.1',
     description='Jmbo gallery app.',
     long_description = open('README.rst', 'r').read(),
     author='Praekelt Foundation',
@@ -11,7 +11,7 @@ setup(
     url='http://github.com/praekelt/jmbo-gallery',
     packages = find_packages(),
     install_requires = [
-        'jmbo',
+        'jmbo-foundry>=0.7',
     ],
     include_package_data=True,
     classifiers = [
