@@ -9,16 +9,14 @@ class Gallery(ModelBase):
         verbose_name_plural = "Galleries"
     
     def item_count(self):
-        return GalleryItem.permitted.filter(gallery=self).count()
-    
-    def get_absolute_url(self):
-        return reverse('gallery_object_detail', kwargs={'slug': self.slug})
+        return GalleryItem.permitted.filter(gallery=self).count()    
 
     def __unicode__(self):
         return self.title
 
     def get_items(self):
         return GalleryItem.permitted.filter(gallery=self).order_by('created')
+
     
 class GalleryItem(ModelBase):
     gallery = models.ForeignKey(
