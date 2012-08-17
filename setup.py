@@ -11,7 +11,7 @@ setup(
     url='http://github.com/praekelt/jmbo-gallery',
     packages = find_packages(),
     install_requires = [
-        'jmbo',
+        'jmbo-foundry', # pin after next release
     ],
     include_package_data=True,
     classifiers = [
