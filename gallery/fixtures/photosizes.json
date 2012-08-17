@@ -41,8 +41,8 @@
             "increment_count": false, 
             "effect": null, 
             "crop": true, 
-            "height": 960, 
-            "width": 1280, 
+            "height": 80, 
+            "width": 120, 
             "upscale": false, 
             "pre_cache": false, 
             "quality": 90
