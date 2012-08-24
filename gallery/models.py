@@ -3,8 +3,10 @@ from django.db import models
 
 from jmbo.models import ModelBase
 
+
 class Gallery(ModelBase):
-    class Meta():
+
+    class Meta:
         verbose_name = "Gallery"
         verbose_name_plural = "Galleries"
     
@@ -23,16 +25,22 @@ class GalleryItem(ModelBase):
         'gallery.Gallery',
     )
 
+
 class GalleryImage(GalleryItem):
-    class Meta():
+
+    class Meta:
         verbose_name = "Gallery image"
         verbose_name_plural = "Gallery images"
 
+
 class VideoEmbed(GalleryItem):
-    embed = models.TextField()
-    class Meta():
+    embed = models.TextField(
+        help_text="""Embedding markup as supplied by Youtube or Vimeo.""")
+
+    class Meta:
         verbose_name = "Video embed"
         verbose_name_plural = "Video embeds"
+
 
 class VideoFile(GalleryItem):
     file = models.FileField(upload_to='content/videofile')

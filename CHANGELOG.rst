@@ -1,6 +1,11 @@
 Changelog
 =========
 
+next
+----
+#. Refactor embedded video so it can be used in a gallery.
+#. Finer grained photo sizes.
+
 0.1
 ---
 #. Add dependency on `jmbo-foundry`.
