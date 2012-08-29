@@ -1,8 +1,8 @@
 {% load jmbo_template_tags foundry_tags i18n gallery_tags %}
 
-<a href="{{ object.get_absolute_url }}">
+<a href="{{ object.get_absolute_url }}" onclick="document.location='http://m.youtube.com/watch?gl=ZA&hl=en&client=mv-google&v={{ object.youtube_id }}'; return false;">
     {% if object.image %}
-        <img src="{{ object.get_listing_vertical_thumbnail_pinned_LAYER_url }}" alt="{{ object.title }}" class="left" />
+        <img src="{{ object.get_listing_vertical_thumbnail_LAYER_url }}" alt="{{ object.title }}" class="left" />
     {% else %}
         {% videoembed object 'listing_vertical_thumbnail' %}
     {% endif %}
