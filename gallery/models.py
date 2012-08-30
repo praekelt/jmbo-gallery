@@ -10,7 +10,8 @@ from django.core.files import File
 from photologue.models import Image
 from jmbo.models import ModelBase
 
-from preferences import Preferences
+from preferences import preferences
+from preferences.models import Preferences
 
 from PIL import Image, ImageDraw
 
@@ -77,16 +78,15 @@ class VideoEmbed(GalleryItem):
                 fp.write(response.read())
             finally:
                 fp.close()
-            image = File(open(filepath, 'rb'))
-            image.name = filename
-            self.image = image
-            pref = GalleryPreference.objects.all()
-            if pref:
-                pil_image = Image.open(image)
-                image_overlay = Image.open(pref.video_play_image.url)
-                # downsize image_overlay if it is larger than image
-                w1, h1 = pil_image.size
-                w2, h2 = image_overlay.size
+
+            # Overlay a play button if possible
+            video_play_image = preferences.GalleryPreferences.video_play_image
+            if video_play_image:
+                image = Image.open(filepath)
+                overlay = Image.open(video_play_image)
+                # Downsize image_overlay if it is larger than image
+                w1, h1 = image.size
+                w2, h2 = overlay.size
                 if w2 > w1 or h2 > h1:
                     ratio1 = w1 / float(h1)
                     ratio2 = w2 / float(h2)
@@ -94,15 +94,16 @@ class VideoEmbed(GalleryItem):
                         resize_fract = h1 / float(h2)
                     else:
                         resize_fract = w1 / float(w2)
-                    
-                    image_overlay.resize(w2 * resize_fract, h2 * resize_fract, Image.ANTIALIAS)
                 
-                pil_image.paste(image_overlay, ((w1 - w2) / 2.0, (h1 - h2) / 2.0))
-                pil_image.save("%s_b%s" % os.path.splitext(self.image.url))
-                self.image = "%s_b%s" % os.path.splitext(self.image.name)
-                    
-            else:
-                raise GalleryPreference.DoesNotExist("The video play overlay image is required.")
+                    overlay.resize(w2 * resize_fract, h2 * resize_fract, Image.ANTIALIAS)
+            
+                image.paste(overlay, (int((w1 - w2) / 2.0), int((h1 - h2) / 2.0)))
+                image.save(filepath)
+
+            # Finally set image
+            image = File(open(filepath, 'rb'))
+            image.name = filename
+            self.image = image           
 
         super(VideoEmbed, self).save(*args, **kwargs)
 
@@ -120,6 +121,4 @@ class GalleryPreferences(Preferences):
     video_play_image = models.ImageField(
         upload_to="preferences",
         help_text="The play button image that is overlaid on a video image"
-    )
-    
-    
+    )    
