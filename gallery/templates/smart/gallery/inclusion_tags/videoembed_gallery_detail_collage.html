@@ -1,0 +1,5 @@
+{% load gallery_tags %}
+
+<a href="{{ object.get_absolute_url }}">
+    <img src="{{ object.get_gallery_detail_collage_LAYER_url }}" alt="{{ object.title }}" />
+</a>

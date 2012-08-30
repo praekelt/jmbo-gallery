@@ -1,13 +1,11 @@
-{% load pagination_tags %}
+{% load pagination_tags jmbo_inclusion_tags %}
 
 {% with object.get_items as items %}
 
     <div class="items">
         {% for item in items %}
             <div class="item {% if forloop.first %}first{% endif %} {% if forloop.last %}last{% endif %}">
-                <a href="{{ item.get_absolute_url }}">
-                    <img src="{{ item.get_gallery_detail_image_LAYER_url }}" alt="{{ item.title }}" />
-                </a>
+                {% render_object item.as_leaf_class "gallery_detail_collage" %}
             </div>
         {% endfor %}
     </div>
