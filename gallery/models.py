@@ -10,6 +10,11 @@ from django.core.files import File
 from photologue.models import Image
 from jmbo.models import ModelBase
 
+from preferences import preferences
+from preferences.models import Preferences
+
+from PIL import Image, ImageDraw
+
 
 class Gallery(ModelBase):
 
@@ -73,9 +78,32 @@ class VideoEmbed(GalleryItem):
                 fp.write(response.read())
             finally:
                 fp.close()
+
+            # Overlay a play button if possible
+            video_play_image = preferences.GalleryPreferences.video_play_image
+            if video_play_image:
+                image = Image.open(filepath)
+                overlay = Image.open(video_play_image)
+                # Downsize image_overlay if it is larger than image
+                w1, h1 = image.size
+                w2, h2 = overlay.size
+                if w2 > w1 or h2 > h1:
+                    ratio1 = w1 / float(h1)
+                    ratio2 = w2 / float(h2)
+                    if ratio1 > ratio2:
+                        resize_fract = h1 / float(h2)
+                    else:
+                        resize_fract = w1 / float(w2)
+                
+                    overlay.resize(w2 * resize_fract, h2 * resize_fract, Image.ANTIALIAS)
+            
+                image.paste(overlay, (int((w1 - w2) / 2.0), int((h1 - h2) / 2.0)))
+                image.save(filepath)
+
+            # Finally set image
             image = File(open(filepath, 'rb'))
             image.name = filename
-            self.image = image
+            self.image = image           
 
         super(VideoEmbed, self).save(*args, **kwargs)
 
@@ -85,3 +113,12 @@ class VideoFile(GalleryItem):
     class Meta():
         verbose_name = "Video file"
         verbose_name_plural = "Video files"
+
+
+class GalleryPreferences(Preferences):
+    __module__ = 'preferences.models'
+
+    video_play_image = models.ImageField(
+        upload_to="preferences",
+        help_text="The play button image that is overlaid on a video image"
+    )    
