@@ -104,9 +104,9 @@
             "increment_count": false, 
             "effect": null, 
             "crop": true, 
-            "height": 960,            
-            "width": 1280, 
-            "upscale": false, 
+            "height": 480,            
+            "width": 640, 
+            "upscale": true, 
             "pre_cache": false, 
             "quality": 90
         }
@@ -120,9 +120,9 @@
             "increment_count": false, 
             "effect": null, 
             "crop": true, 
-            "height": 960, 
-            "width": 1280, 
-            "upscale": false, 
+            "height": 480, 
+            "width": 640, 
+            "upscale": true, 
             "pre_cache": false, 
             "quality": 90
         }
