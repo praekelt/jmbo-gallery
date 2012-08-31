@@ -1,3 +1,7 @@
 {% load gallery_tags %}
 
 {% videoembed object 'videoembed_detail_image' %}
+
+{% if object.description %}
+    {{ object.description|linebreaks }}
+{% endif %}
