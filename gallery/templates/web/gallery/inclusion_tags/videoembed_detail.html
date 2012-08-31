@@ -3,7 +3,9 @@
 {% videoembed object 'videoembed_detail_image' %}
 
 {% if object.description %}
-    <p>{{ object.description|linebreaks }}</p>
+    <div class="description">
+        {{ object.description|linebreaks }}
+    </div>
 {% endif %}
 
 <div class="clear"></div>
