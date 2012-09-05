@@ -56,7 +56,7 @@ class VideoEmbed(GalleryItem):
     @property
     def youtube_id(self):
         """Extract and return Youtube video id"""
-        m = re.search(r'/embed/([A-Za-z0-9\-=_]*)"', self.embed)
+        m = re.search(r'/embed/([A-Za-z0-9\-=_]*)', self.embed)
         if m:
             return m.group(1)
         return ''
