@@ -15,7 +15,6 @@
             "quality": 90
         }
     },
-
     {
         "pk": null, 
         "model": "photologue.photosize", 
@@ -53,6 +52,134 @@
         "model": "photologue.photosize", 
         "fields": {
             "name": "gallery_detail_image_web", 
+            "watermark": null, 
+            "increment_count": false, 
+            "effect": null, 
+            "crop": true, 
+            "height": 960, 
+            "width": 1280, 
+            "upscale": false, 
+            "pre_cache": false, 
+            "quality": 90
+        }
+    },
+    {
+        "pk": null, 
+        "model": "photologue.photosize", 
+        "fields": {
+            "name": "videoembed_detail_image_basic", 
+            "watermark": null, 
+            "increment_count": false, 
+            "effect": null, 
+            "crop": true, 
+            "height": 180, 
+            "width": 240, 
+            "upscale": false, 
+            "pre_cache": false, 
+            "quality": 90
+        }
+    },
+    {
+        "pk": null, 
+        "model": "photologue.photosize", 
+        "fields": {
+            "name": "videoembed_detail_image_mid", 
+            "watermark": null, 
+            "increment_count": false, 
+            "effect": null, 
+            "crop": true, 
+            "height": 240, 
+            "width": 320, 
+            "upscale": false, 
+            "pre_cache": false, 
+            "quality": 90
+        }
+    },
+    {
+        "pk": null, 
+        "model": "photologue.photosize", 
+        "fields": {
+            "name": "videoembed_detail_image_smart", 
+            "watermark": null, 
+            "increment_count": false, 
+            "effect": null, 
+            "crop": true, 
+            "height": 480,            
+            "width": 640, 
+            "upscale": true, 
+            "pre_cache": false, 
+            "quality": 90
+        }
+    },
+    {
+        "pk": null, 
+        "model": "photologue.photosize", 
+        "fields": {
+            "name": "videoembed_detail_image_web", 
+            "watermark": null, 
+            "increment_count": false, 
+            "effect": null, 
+            "crop": true, 
+            "height": 480, 
+            "width": 640, 
+            "upscale": true, 
+            "pre_cache": false, 
+            "quality": 90
+        }
+    },
+    {
+        "pk": null, 
+        "model": "photologue.photosize", 
+        "fields": {
+            "name": "gallery_detail_collage_basic", 
+            "watermark": null, 
+            "increment_count": false, 
+            "effect": null, 
+            "crop": true, 
+            "height": 180, 
+            "width": 240, 
+            "upscale": false, 
+            "pre_cache": false, 
+            "quality": 90
+        }
+    },
+    {
+        "pk": null, 
+        "model": "photologue.photosize", 
+        "fields": {
+            "name": "gallery_detail_collage_mid", 
+            "watermark": null, 
+            "increment_count": false, 
+            "effect": null, 
+            "crop": true, 
+            "height": 240, 
+            "width": 320, 
+            "upscale": false, 
+            "pre_cache": false, 
+            "quality": 90
+        }
+    },
+    {
+        "pk": null, 
+        "model": "photologue.photosize", 
+        "fields": {
+            "name": "gallery_detail_collage_smart", 
+            "watermark": null, 
+            "increment_count": false, 
+            "effect": null, 
+            "crop": true, 
+            "height": 80, 
+            "width": 120, 
+            "upscale": false, 
+            "pre_cache": false, 
+            "quality": 90
+        }
+    },
+    {
+        "pk": null, 
+        "model": "photologue.photosize", 
+        "fields": {
+            "name": "gallery_detail_collage_web", 
             "watermark": null, 
             "increment_count": false, 
             "effect": null, 
