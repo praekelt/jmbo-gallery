@@ -1,0 +1,38 @@
+{% extends "admin/base_site.html" %}
+
+{% block content %}
+
+<h1>Bulk Upload Images to <i>{{ form.gallery.title }}</i></h1>
+
+<p>
+<ul>
+<li>
+Specify any combination of image files or ZIP files containing a collection 
+of image files. 
+</li>
+<li>Try to limit the total size to something that will not take too 
+long on your internet connection.
+</li>
+<li>
+Invalid files are intentionally ignored so you don't have to repeat the process if there is a single invalid file.
+</li>
+<li>
+Newly created images are in an unpublished state awaiting your 
+review.
+</li>
+</ul>
+</p>
+
+<form action="." method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    <fieldset class="module aligned ">
+    {{ form.as_p }}
+    </fieldset>
+
+    <div class="submit-row">
+        <input type="submit" value="Upload" />
+    </div>
+</form>
+
+{% endblock %}
+
