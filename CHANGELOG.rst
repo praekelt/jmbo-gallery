@@ -1,6 +1,10 @@
 Changelog
 =========
 
+0.2.1
+-----
+#. Bulk image upload form
+
 0.2
 ---
 #. Refactor embedded video so it can be used in a gallery.
