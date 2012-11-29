@@ -1,6 +1,10 @@
 Changelog
 =========
 
+next
+----
+#. Do not assume the presence of jquery.
+
 0.2.1
 -----
 #. Bulk image upload form
