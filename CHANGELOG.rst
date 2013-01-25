@@ -1,8 +1,8 @@
 Changelog
 =========
 
-next
-----
+0.2.2
+-----
 #. Do not assume the presence of jquery.
 #. Friendlier url to detail page.
 
