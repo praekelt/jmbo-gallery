@@ -4,6 +4,7 @@ Changelog
 next
 ----
 #. Do not assume the presence of jquery.
+#. Friendlier url to detail page.
 
 0.2.1
 -----
