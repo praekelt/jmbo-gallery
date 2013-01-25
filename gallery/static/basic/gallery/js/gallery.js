@@ -1,3 +1,6 @@
+if (typeof $ != 'undefined')
+{
+
 $(document).ready(function(){
 
     // Resize embedded video on detail page to match container size
@@ -13,3 +16,5 @@ $(document).ready(function(){
     });
 
 });
+
+}
