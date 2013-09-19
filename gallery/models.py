@@ -21,9 +21,9 @@ class Gallery(ModelBase):
     class Meta:
         verbose_name = "Gallery"
         verbose_name_plural = "Galleries"
-    
+
     def item_count(self):
-        return GalleryItem.permitted.filter(gallery=self).count()    
+        return GalleryItem.permitted.filter(gallery=self).count()
 
     def __unicode__(self):
         return self.title
@@ -31,7 +31,7 @@ class Gallery(ModelBase):
     def get_items(self):
         return GalleryItem.permitted.filter(gallery=self).order_by('created')
 
-    
+
 class GalleryItem(ModelBase):
     gallery = models.ForeignKey(
         'gallery.Gallery',
@@ -60,7 +60,7 @@ class VideoEmbed(GalleryItem):
         if m:
             return m.group(1)
         return ''
-    
+
     def save(self, *args, **kwargs):
         """Automatically set image"""
         url = "http://img.youtube.com/vi/%s/0.jpg" % self.youtube_id
@@ -69,7 +69,7 @@ class VideoEmbed(GalleryItem):
         except Exception, e:
             # Blindly catch exceptions
             pass
-        else:            
+        else:
             # Jump through filesystem hoop to please photologue
             filename = self.youtube_id + '.jpg'
             filepath = os.path.join(mkdtemp(), filename)
@@ -94,16 +94,16 @@ class VideoEmbed(GalleryItem):
                         resize_fract = h1 / float(h2)
                     else:
                         resize_fract = w1 / float(w2)
-                
+
                     overlay.resize(w2 * resize_fract, h2 * resize_fract, Image.ANTIALIAS)
-            
+
                 image.paste(overlay, (int((w1 - w2) / 2.0), int((h1 - h2) / 2.0)))
                 image.save(filepath)
 
             # Finally set image
             image = File(open(filepath, 'rb'))
             image.name = filename
-            self.image = image           
+            self.image = image
 
         super(VideoEmbed, self).save(*args, **kwargs)
 
@@ -121,4 +121,4 @@ class GalleryPreferences(Preferences):
     video_play_image = models.ImageField(
         upload_to="preferences",
         help_text="The play button image that is overlaid on a video image"
-    )    
+    )

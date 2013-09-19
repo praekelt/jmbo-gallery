@@ -1,11 +1,15 @@
-<a href="{{ object.get_absolute_url }}">
-    <img src="{{ object.get_gallery_detail_collage_LAYER_url }}" alt="{{ object.title }}" />
-</a>
+{% load jmbo_template_tags %}
 
-<div class="title">
-    {% if object.description %}
-        {{ object.description }}
-    {% else %}
-        {{ object.title }}
-    {% endif %}
-</div>
+{% jmbocache 3600 'galleryimage-gallery-detail-collage-inclusion' object.id object.modified %}
+    <a href="{{ object.get_absolute_url }}">
+        <img src="{{ object.get_gallery_detail_collage_LAYER_url }}" alt="{{ object.title }}" />
+    </a>
+
+    <div class="title">
+        {% if object.description %}
+            {{ object.description }}
+        {% else %}
+            {{ object.title }}
+        {% endif %}
+    </div>
+{% endjmbocache %}

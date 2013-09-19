@@ -13,7 +13,7 @@ class GalleryAdmin(ModelBaseAdmin):
     def _actions(self, obj):
         result = super(GalleryAdmin, self)._actions(obj)
         try:
-            url = reverse('gallery-bulk-image-upload', args=[obj.id])            
+            url = reverse('gallery-bulk-image-upload', args=[obj.id])
             return result + '<a href="%s">Bulk upload</a>' % url
         except NoReverseMatch:
             return result + "Bulk upload - add gallery admin_urls to settings, eg. <code>(r'^admin/', include('gallery.admin_urls'))</code>"

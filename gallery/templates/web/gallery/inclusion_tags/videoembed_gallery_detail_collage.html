@@ -1,1 +1,7 @@
-EMMEDDED VIDEO CANNOT BE IN A WEB GALLERY
+{% load jmbo_template_tags %}
+
+{% jmbocache 3600 'videoembed-gallery-detail-collage-inclusion' object.id object.modified %}
+    <a href="{{ object.get_absolute_url }}" onclick="document.location='http://m.youtube.com/watch?gl=ZA&hl=en&client=mv-google&v={{ object.youtube_id }}'; return false;">
+        <img src="{{ object.get_videoembed_detail_image_LAYER_url }}" alt="{{ object.title }}" />
+    </a>
+{% endjmbocache %}
