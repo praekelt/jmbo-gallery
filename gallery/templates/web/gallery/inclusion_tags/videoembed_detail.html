@@ -1,11 +1,14 @@
-{% load gallery_tags %}
+{% extends "jmbo/inclusion_tags/modelbase_detail.html" %}
+{% load gallery_tags jmbo_template_tags %}
 
-{% videoembed object 'videoembed_detail_image' %}
+{% block content %}
+    {% jmbocache 3600 'object-detail-inclusion' object.id object.modified %}
+        {% videoembed object 'videoembed_detail_image' %}
 
-{% if object.description %}
-    <div class="description">
-        {{ object.description|linebreaks }}
-    </div>
-{% endif %}
-
-<div class="clear"></div>
+        {% if object.description %}
+            <div class="description">
+                {{ object.description|linebreaks }}
+            </div>
+        {% endif %}
+    {% endjmbocache %}
+{% endblock %}

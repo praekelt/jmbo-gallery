@@ -1,13 +1,18 @@
-{% load gallery_tags %}
+{% extends "jmbo/inclusion_tags/modelbase_detail.html" %}
+{% load gallery_tags jmbo_template_tags %}
 
-<a href="{{ object.get_absolute_url }}" onclick="document.location='http://m.youtube.com/watch?gl=ZA&hl=en&client=mv-google&v={{ object.youtube_id }}'; return false;">
-    <img src="{{ object.get_videoembed_detail_image_LAYER_url }}" alt="{{ object.title }}" />
-</a>
+{% block content %}
+    {% jmbocache 3600 'object-detail-inclusion' object.id object.modified %}
 
-{% if object.description %}
-    <div class="description">
-        {{ object.description|linebreaks }}
-    </div>
-{% endif %}
+        <a href="{{ object.get_absolute_url }}" onclick="document.location='http://m.youtube.com/watch?gl=ZA&hl=en&client=mv-google&v={{ object.youtube_id }}'; return false;">
+            <img src="{{ object.get_videoembed_detail_image_LAYER_url }}" alt="{{ object.title }}" />
+        </a>
 
-<div class="clear"></div>
+        {% if object.description %}
+            <div class="description">
+                {{ object.description|linebreaks }}
+            </div>
+        {% endif %}
+
+    {% endjmbocache %}
+{% endblock %}

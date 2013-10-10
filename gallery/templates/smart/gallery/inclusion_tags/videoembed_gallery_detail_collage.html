@@ -1,5 +1,7 @@
-{% load gallery_tags %}
+{% load gallery_tags jmbo_template_tags %}
 
-<a href="{{ object.get_absolute_url }}">
-    <img src="{{ object.get_gallery_detail_collage_LAYER_url }}" alt="{{ object.title }}" />
-</a>
+{% jmbocache 3600 'videoembed-gallery-detail-collage-inclusion' object.id object.modified %}
+    <a href="{{ object.get_absolute_url }}">
+        <img src="{{ object.get_gallery_detail_collage_LAYER_url }}" alt="{{ object.title }}" />
+    </a>
+{% endjmbocache %}

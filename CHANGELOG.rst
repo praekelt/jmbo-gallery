@@ -1,6 +1,10 @@
 Changelog
 =========
 
+0.2.3
+-----
+#. Cache templates.
+
 0.2.2
 -----
 #. Do not assume the presence of jquery.

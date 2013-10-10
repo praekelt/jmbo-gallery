@@ -1,6 +1,10 @@
-<img 
-    src="{{ object.get_gallery_detail_image_LAYER_url }}" 
-    frame="{{ object.get_gallery_detail_image_LAYER_url }}" 
-    title="{{ object.title }}" 
-    longdesc="{{ object.description }}"
-    />
+{% load jmbo_template_tags %}
+
+{% jmbocache 3600 'galleryimage-gallery-detail-collage-inclusion' object.id object.modified %}
+    <img
+        src="{{ object.get_gallery_detail_image_LAYER_url }}"
+        frame="{{ object.get_gallery_detail_image_LAYER_url }}"
+        title="{{ object.title }}"
+        longdesc="{{ object.description|default:"" }}"
+        />
+{% endjmbocache %}
