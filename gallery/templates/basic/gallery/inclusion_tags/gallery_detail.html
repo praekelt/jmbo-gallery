@@ -13,4 +13,10 @@
         </div>
         {% paginate %}
     {% endwith %}
+
+    {% if object.content %}
+        <div class="content">
+            {{ object.content|safe }}
+        </div>
+    {% endif %}
 {% endblock %}
