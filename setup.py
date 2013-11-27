@@ -13,6 +13,10 @@ setup(
     install_requires = [
         'jmbo-foundry>=0.7',
     ],
+    tests_require=[
+        'django-setuptest>=0.1.2',
+    ],
+    test_suite="setuptest.setuptest.SetupTestSuite",
     include_package_data=True,
     classifiers = [
         "Programming Language :: Python",
