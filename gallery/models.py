@@ -7,8 +7,10 @@ from django.core.urlresolvers import reverse
 from django.db import models
 from django.core.files import File
 
+from ckeditor.fields import RichTextField
 from photologue.models import Image
 from jmbo.models import ModelBase
+from south.modelsinspector import add_introspection_rules
 
 from preferences import preferences
 from preferences.models import Preferences
@@ -17,6 +19,11 @@ from PIL import Image, ImageDraw
 
 
 class Gallery(ModelBase):
+
+    content = RichTextField(
+        blank=True,
+        null=True,
+    )
 
     class Meta:
         verbose_name = "Gallery"
@@ -122,3 +129,7 @@ class GalleryPreferences(Preferences):
         upload_to="preferences",
         help_text="The play button image that is overlaid on a video image"
     )
+
+
+# Custom fields to be handled by south
+add_introspection_rules([], ["^ckeditor\.fields\.RichTextField"])

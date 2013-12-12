@@ -1,17 +1,26 @@
+{% extends "jmbo/inclusion_tags/modelbase_detail.html" %}
+
 {% load jmbo_inclusion_tags %}
 
-{% with object.get_items as items %}
-    <div class="items">
-        <ul id="gallery">
-        {% for item in items %}
-            <div class="item {% if forloop.first %}first{% endif %} {% if forloop.last %}last{% endif %}">
-                <li>
-                    {% render_object item.as_leaf_class "gallery_detail_collage" %}
-                </li>
-            </div>
-        {% endfor %}
-        </ul>
-        <div class="clear"></div>
-    </div>
+{% block content %}
+    {% with object.get_items as items %}
+        <div class="items">
+            <ul id="gallery">
+            {% for item in items %}
+                <div class="item {% if forloop.first %}first{% endif %} {% if forloop.last %}last{% endif %}">
+                    <li>
+                        {% render_object item.as_leaf_class "gallery_detail_collage" %}
+                    </li>
+                </div>
+            {% endfor %}
+            </ul>
+            <div class="clear"></div>
+        </div>
 
-{% endwith %}
+        {% if object.content %}
+            <div class="content">
+                {{ object.content|safe }}
+            </div>
+        {% endif %}
+    {% endwith %}
+{% endblock %}

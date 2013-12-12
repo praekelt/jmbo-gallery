@@ -1,6 +1,12 @@
 Changelog
 =========
 
+0.2.4
+-----
+#. Convert the product to support South migrations. If you have an existing installation you must do `/bin/django migrate gallery 0001 --fake` once.
+#. Add optional content richtext field to gallery.
+#. Remove redundant tests.
+
 0.2.3
 -----
 #. Cache templates.
