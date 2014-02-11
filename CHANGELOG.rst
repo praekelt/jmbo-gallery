@@ -1,8 +1,8 @@
 Changelog
 =========
 
-next
-----
+0.2.5
+-----
 #. Give embedded video its own URL pattern.
 
 0.2.4
