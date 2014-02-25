@@ -1,6 +1,10 @@
 Changelog
 =========
 
+next
+----
+#. Use correct container to resize embedded video.
+
 0.2.5
 -----
 #. Give embedded video its own URL pattern.
