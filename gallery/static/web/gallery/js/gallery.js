@@ -1165,7 +1165,7 @@ $(document).ready(function(){
     });
 
     // Resize embedded video on detail page to match container size
-    $('div.videoembed-detail').each(function(){
+    $('div.videoembed-detail-inclusion, div.foundry-listing div.item-videoembed').each(function(){
         var el = $(this);
         var iframe = $('iframe', el);
         var wo = iframe.width();
