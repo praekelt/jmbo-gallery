@@ -1,8 +1,8 @@
 Changelog
 =========
 
-next
-----
+0.2.6
+-----
 #. Use correct container to resize embedded video.
 #. Added mask argument to PIL.Image.paste to preserve transparancy.
 
