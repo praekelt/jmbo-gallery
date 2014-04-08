@@ -104,7 +104,7 @@ class VideoEmbed(GalleryItem):
 
                     overlay.resize(w2 * resize_fract, h2 * resize_fract, Image.ANTIALIAS)
 
-                image.paste(overlay, (int((w1 - w2) / 2.0), int((h1 - h2) / 2.0)))
+                image.paste(overlay, (int((w1 - w2) / 2.0), int((h1 - h2) / 2.0)), mask=overlay)
                 image.save(filepath)
 
             # Finally set image
