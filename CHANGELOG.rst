@@ -1,10 +1,11 @@
 Changelog
 =========
 
-next
-----
+0.2.6
+-----
 #. Use correct container to resize embedded video.
 #. URL pattern for gallery image.
+#. Added mask argument to PIL.Image.paste to preserve transparancy.
 
 0.2.5
 -----
