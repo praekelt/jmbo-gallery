@@ -1,8 +1,8 @@
 Changelog
 =========
 
-next
-----
+0.2.7
+-----
 #. URL pattern for gallery image.
 
 0.2.6
