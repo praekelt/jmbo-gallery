@@ -11,6 +11,7 @@ setup(
     url='http://github.com/praekelt/jmbo-gallery',
     packages = find_packages(),
     install_requires = [
+        'django-ckeditor>=4.0.2',
         'jmbo>=1.1.1',
     ],
     tests_require=[

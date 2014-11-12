@@ -42,7 +42,6 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'likes.middleware.SecretBallotUserIpUseragentMiddleware',
-    'pagination.middleware.PaginationMiddleware',
 )
 
 TEMPLATE_CONTEXT_PROCESSORS = (
