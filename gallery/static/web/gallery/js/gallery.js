@@ -1069,7 +1069,7 @@ jQuery.extend({
             var counter = 0;
             
             if (jQuery.isFunction(label)) {
-                if (!times) 
+                if (!times)
                     times = fn;
                 fn = label;
                 label = interval;
@@ -1080,7 +1080,7 @@ jQuery.extend({
             if (typeof interval != 'number' || isNaN(interval) || interval < 0)
                 return;
 
-            if (typeof times != 'number' || isNaN(times) || times < 0) 
+            if (typeof times != 'number' || isNaN(times) || times < 0)
                 times = 0;
             
             times = times || 0;
@@ -1125,16 +1125,16 @@ jQuery.extend({
                             delete timers[label][fn];
                         }
                     }
-                    
+
                     for ( ret in timers[label] ) break;
                     if ( !ret ) {
                         ret = null;
                         delete timers[label];
                     }
                 }
-                
+
                 for ( ret in timers ) break;
-                if ( !ret ) 
+                if ( !ret )
                     jQuery.removeData(element, this.dataKey);
             }
         }
@@ -1157,7 +1157,7 @@ $(document).ready(function(){
             buildStartStop      : false
         });
     });
-    
+
     //Gallery initialize
     $('#gallery').galleryView({
         frame_width: 55,
@@ -1165,6 +1165,8 @@ $(document).ready(function(){
     });
 
     // Resize embedded video on detail page to match container size
+    // We're introducing knowledge of jmbo-foundry even though the product has
+    // no dependency on it. Pragmatism.
     $('div.videoembed-detail-inclusion, div.foundry-listing div.item-videoembed').each(function(){
         var el = $(this);
         var iframe = $('iframe', el);

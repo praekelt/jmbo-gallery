@@ -1,6 +1,10 @@
 Changelog
 =========
 
+next
+----
+#. Remove dependency on `jmbo-foundry`.
+
 0.2.7
 -----
 #. URL pattern for gallery image.
