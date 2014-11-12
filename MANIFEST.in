@@ -7,3 +7,4 @@ recursive-include gallery/templates *
 recursive-include gallery/locale *
 recursive-include gallery/static *
 recursive-include gallery/templatetags *
+recursive-include gallery/tests *
