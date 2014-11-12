@@ -1,8 +1,8 @@
 Changelog
 =========
 
-next
-----
+0.3
+---
 #. Remove dependency on `jmbo-foundry`.
 
 0.2.7
