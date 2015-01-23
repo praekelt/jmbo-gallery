@@ -1,6 +1,10 @@
 Changelog
 =========
 
+next
+----
+#. Add tests.
+
 0.3
 ---
 #. Remove dependency on `jmbo-foundry`.

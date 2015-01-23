@@ -16,6 +16,7 @@ setup(
     ],
     tests_require=[
         'django-setuptest>=0.1.4',
+        'django-layers-hr>=0.2',
     ],
     test_suite="setuptest.setuptest.SetupTestSuite",
     include_package_data=True,
