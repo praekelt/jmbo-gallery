@@ -1,7 +1,3 @@
-# We're still on Django 1.4 and use django-setuptest. Use this as a starting
-# point for your test settings. Typically copy this file as test_settings.py
-# and replace myapp with your app name.
-
 from os.path import expanduser
 
 DEBUG = True
@@ -25,6 +21,8 @@ INSTALLED_APPS = (
     'likes',
     'secretballot',
     'publisher',
+    'pagination',
+    'layers',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.comments',
@@ -42,6 +40,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'likes.middleware.SecretBallotUserIpUseragentMiddleware',
+    'pagination.middleware.PaginationMiddleware',
 )
 
 TEMPLATE_CONTEXT_PROCESSORS = (
@@ -68,3 +67,20 @@ SOUTH_TESTS_MIGRATE = False
 # Disable celery
 CELERY_ALWAYS_EAGER = True
 BROKER_BACKEND = 'memory'
+
+# To test layers we need these settings
+LAYERS = {'layers': ['basic']}
+
+TEMPLATE_LOADERS = (
+    'layers.loaders.filesystem.Loader',
+    'django.template.loaders.filesystem.Loader',
+    'layers.loaders.app_directories.Loader',
+    'django.template.loaders.app_directories.Loader',
+)
+
+STATICFILES_FINDERS = (
+    'layers.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'layers.finders.AppDirectoriesFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+)

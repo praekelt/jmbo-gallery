@@ -1,6 +1,12 @@
 Changelog
 =========
 
+2.0.0a1
+-------
+#. Add tests.
+#. Django 1.6 compatibility.
+#. Up required jmbo to 2.0.0.
+
 0.3
 ---
 #. Remove dependency on `jmbo-foundry`.

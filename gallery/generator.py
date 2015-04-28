@@ -5,7 +5,7 @@ from django.conf import settings
 from generate import IMAGES, VIDEOS
 from generate.json_loader import load_json
 
-GALLERY_COUNT = 20
+GALLERY_COUNT = 2
 
 def generate():
     objects = []

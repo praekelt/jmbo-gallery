@@ -1,7 +1,8 @@
-from django.conf.urls.defaults import patterns, include
+from django.conf.urls import patterns, include
 
 
 urlpatterns = patterns(
+    '',
     (r'^jmbo/', include('jmbo.urls')),
     (r'^comments/', include('django.contrib.comments.urls')),
     (r'^gallery/', include('gallery.urls')),
