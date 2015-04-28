@@ -4,9 +4,11 @@
 {% block content %}
     {% jmbocache 3600 'object-detail-inclusion' object.id object.modified %}
 
-        <a href="{{ object.get_absolute_url }}" onclick="document.location='http://m.youtube.com/watch?gl=ZA&hl=en&client=mv-google&v={{ object.youtube_id }}'; return false;">
-            <img src="{{ object.get_videoembed_detail_image_LAYER_url }}" alt="{{ object.title }}" />
-        </a>
+        {% id object.image %}
+            <a href="{{ object.get_absolute_url }}" onclick="document.location='http://m.youtube.com/watch?gl=ZA&hl=en&client=mv-google&v={{ object.youtube_id }}'; return false;">
+                <img src="{{ object.get_videoembed_detail_image_url }}" alt="{{ object.title }}" />
+            </a>
+        {% endif %}
 
         {% if object.description %}
             <div class="description">
