@@ -1,7 +1,3 @@
-# We're still on Django 1.4 and use django-setuptest. Use this as a starting
-# point for your test settings. Typically copy this file as test_settings.py
-# and replace myapp with your app name.
-
 from os.path import expanduser
 
 DEBUG = True
