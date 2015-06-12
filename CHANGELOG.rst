@@ -1,6 +1,10 @@
 Changelog
 =========
 
+2.0.0
+-----
+#. Stabilize on jmbo 2.0.0.
+
 2.0.0a1
 -------
 #. Add tests.
