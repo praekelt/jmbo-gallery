@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='jmbo-gallery',
-    version='2.0.0a1',
+    version='2.0.0',
     description='Jmbo gallery app.',
     long_description = open('README.rst', 'r').read() + open('AUTHORS.rst', 'r').read() + open('CHANGELOG.rst', 'r').read(),
     author='Praekelt Foundation',
@@ -12,7 +12,7 @@ setup(
     packages = find_packages(),
     install_requires = [
         'django-ckeditor>=4.0.2',
-        'jmbo==2.0.0a2',
+        'jmbo==2.0.0',
     ],
     tests_require=[
         'django-setuptest>=0.1.4',
