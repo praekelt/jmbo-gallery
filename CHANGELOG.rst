@@ -1,6 +1,10 @@
 Changelog
 =========
 
+2.0.1
+-----
+#. Relax explicit pin on jmbo.
+
 2.0.0
 -----
 #. Stabilize on jmbo 2.0.0.
