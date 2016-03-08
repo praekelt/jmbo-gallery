@@ -4,6 +4,7 @@ Changelog
 next
 ----
 #. Fix typo in template.
+#. Remove redundant LAYER suffixes.
 
 2.0.1
 -----
