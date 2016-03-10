@@ -1,8 +1,8 @@
 Changelog
 =========
 
-next
-----
+2.0.2
+-----
 #. Fix typo in template.
 #. Remove redundant LAYER suffixes.
 
