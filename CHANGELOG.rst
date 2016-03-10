@@ -1,6 +1,11 @@
 Changelog
 =========
 
+2.0.2
+-----
+#. Fix typo in template.
+#. Remove redundant LAYER suffixes.
+
 2.0.1
 -----
 #. Relax explicit pin on jmbo.

@@ -28,7 +28,7 @@ class VideoEmbedNode(template.Node):
     def render(self, context):
         obj = self.obj.resolve(context)
         photosize = self.photosize.resolve(context)
-        size = PhotoSizeCache().sizes.get(photosize + '_LAYER')
+        size = PhotoSizeCache().sizes.get(photosize)
         result = obj.embed
         result = re.sub(r'width="([\d]*)"', 'width="%s"' % size.width, result)
         result = re.sub(r'height="([\d]*)"', 'height="%s"' % size.height, result)

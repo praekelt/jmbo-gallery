@@ -3,7 +3,7 @@
 {% jmbocache 3600 'galleryimage-gallery-detail-collage-inclusion' object.id object.modified %}
     {% if object.image %}
         <img
-            src="{{ object.get_gallery_detail_image__url }}"
+            src="{{ object.get_gallery_detail_image_url }}"
             frame="{{ object.get_gallery_detail_image_url }}"
             title="{{ object.title }}"
             longdesc="{{ object.description|default:"" }}"
