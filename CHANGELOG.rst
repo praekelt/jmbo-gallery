@@ -1,7 +1,7 @@
 Changelog
 =========
 
-next
+2.0.3
 -----
 #. Fix typo in template.
 
