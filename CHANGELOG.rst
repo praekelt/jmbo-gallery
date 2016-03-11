@@ -1,6 +1,10 @@
 Changelog
 =========
 
+next
+-----
+#. Fix typo in template.
+
 2.0.2
 -----
 #. Fix typo in template.
