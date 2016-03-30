@@ -1,6 +1,11 @@
 Changelog
 =========
 
+2.0.4
+-----
+#. Use requests library to fetch cover images.
+#. Move to tox for unit testing.
+
 2.0.3
 -----
 #. Fix typo in template.

@@ -1,7 +1,7 @@
 import os
 import re
-import urllib2
 from tempfile import mkdtemp
+import requests
 
 from django.core.urlresolvers import reverse
 from django.db import models
@@ -72,9 +72,9 @@ class VideoEmbed(GalleryItem):
         """Automatically set image"""
         url = "http://img.youtube.com/vi/%s/0.jpg" % self.youtube_id
         try:
-            response = urllib2.urlopen(url)
-        except Exception, e:
-            # Blindly catch exceptions
+            response = requests.get(url)
+        except requests.exceptions.RequestException:
+            # Nothing we can really do in this case
             pass
         else:
             # Jump through filesystem hoop to please photologue
@@ -82,7 +82,7 @@ class VideoEmbed(GalleryItem):
             filepath = os.path.join(mkdtemp(), filename)
             fp = open(filepath, 'wb')
             try:
-                fp.write(response.read())
+                fp.write(response.content)
             finally:
                 fp.close()
 
