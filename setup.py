@@ -13,6 +13,7 @@ setup(
     install_requires = [
         'django-ckeditor>=4.0.2',
         'jmbo>=2.0.0',
+        'requests',
     ],
     tests_require=[
         'django-setuptest>=0.1.4',

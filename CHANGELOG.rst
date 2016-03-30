@@ -1,6 +1,10 @@
 Changelog
 =========
 
+next
+----
+#. Use requests library to fetch cover images.
+
 2.0.3
 -----
 #. Fix typo in template.
