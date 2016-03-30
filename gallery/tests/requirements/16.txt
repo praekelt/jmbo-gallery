@@ -23,4 +23,4 @@ django-object-tools==1.0.4
 django-photologue==3.1.1
 django-publisher==0.0.3
 django-snippetscream==0.0.7
-django-layers==0.4
+django-layers-hr==0.4
