@@ -11,7 +11,7 @@ setup(
     url='http://github.com/praekelt/jmbo-gallery',
     packages = find_packages(),
     install_requires = [
-        'jmbo>=2.0.15',
+        'jmbo>=2.0.0',
         'requests',
     ],
     include_package_data=True,
