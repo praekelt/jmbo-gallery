@@ -1,6 +1,9 @@
-from os.path import expanduser
+import os
 
-DEBUG = True
+
+USE_TZ = True
+
+TIME_ZONE = 'Africa/Johannesburg'
 
 DATABASES = {
     'default': {
@@ -20,9 +23,9 @@ INSTALLED_APPS = (
     'category',
     'likes',
     'secretballot',
-    'publisher',
     'pagination',
     'layers',
+    'publisher',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.comments',
@@ -54,19 +57,24 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     'django.contrib.messages.context_processors.messages',
 )
 
-USE_TZ = True
-
 SITE_ID = 1
 
 STATIC_URL = '/static/'
 
-CKEDITOR_UPLOAD_PATH = expanduser('~')
-
-SOUTH_TESTS_MIGRATE = False
-
 # Disable celery
 CELERY_ALWAYS_EAGER = True
 BROKER_BACKEND = 'memory'
+
+SECRET_KEY = 'SECRET_KEY'
+
+STAGING = False
+
+# xxx: get tests to pass with migrations
+SOUTH_TESTS_MIGRATE = False
+
+TEMPLATE_DIRS = (
+    os.path.realpath(os.path.dirname(__file__)) + '/../templates/',
+)
 
 # To test layers we need these settings
 LAYERS = {'layers': ['basic']}

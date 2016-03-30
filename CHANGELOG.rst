@@ -4,6 +4,7 @@ Changelog
 next
 ----
 #. Use requests library to fetch cover images.
+#. Move to tox for unit testing.
 
 2.0.3
 -----
