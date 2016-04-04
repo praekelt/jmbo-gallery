@@ -2,6 +2,7 @@ import os
 import re
 from tempfile import mkdtemp
 import requests
+from PIL import Image, ImageDraw
 
 from django.core.urlresolvers import reverse
 from django.db import models
@@ -15,7 +16,6 @@ from south.modelsinspector import add_introspection_rules
 from preferences import preferences
 from preferences.models import Preferences
 
-from PIL import Image, ImageDraw
 
 
 class Gallery(ModelBase):
@@ -70,47 +70,72 @@ class VideoEmbed(GalleryItem):
 
     def save(self, *args, **kwargs):
         """Automatically set image"""
-        url = "http://img.youtube.com/vi/%s/0.jpg" % self.youtube_id
-        try:
-            response = requests.get(url)
-        except requests.exceptions.RequestException:
-            # Nothing we can really do in this case
-            pass
-        else:
-            # Jump through filesystem hoop to please photologue
-            filename = self.youtube_id + '.jpg'
-            filepath = os.path.join(mkdtemp(), filename)
-            fp = open(filepath, 'wb')
+
+        if not self.image:
+
+            # Fetch image
+            url = "http://img.youtube.com/vi/%s/0.jpg" % self.youtube_id
+            response = None
             try:
-                fp.write(response.content)
-            finally:
-                fp.close()
+                response = requests.get(url)
+            except requests.exceptions.RequestException:
+                # Nothing we can really do in this case
+                pass
 
-            # Overlay a play button if possible
-            video_play_image = preferences.GalleryPreferences.video_play_image
-            if video_play_image:
-                image = Image.open(filepath)
-                overlay = Image.open(video_play_image)
-                # Downsize image_overlay if it is larger than image
-                w1, h1 = image.size
-                w2, h2 = overlay.size
-                if w2 > w1 or h2 > h1:
-                    ratio1 = w1 / float(h1)
-                    ratio2 = w2 / float(h2)
-                    if ratio1 > ratio2:
-                        resize_fract = h1 / float(h2)
-                    else:
-                        resize_fract = w1 / float(w2)
+            if response is not None:
+                # Jump through filesystem hoop to please photologue
+                filename = self.youtube_id + '.jpg'
+                filepath = os.path.join(mkdtemp(), filename)
+                fp = open(filepath, 'wb')
+                try:
+                    fp.write(response.content)
+                finally:
+                    fp.close()
 
-                    overlay.resize(w2 * resize_fract, h2 * resize_fract, Image.ANTIALIAS)
+                # Check for a valid image
+                image = None
+                try:
+                    image = Image.open(filepath)
+                except IOError:
+                    os.remove(filepath)
 
-                image.paste(overlay, (int((w1 - w2) / 2.0), int((h1 - h2) / 2.0)), mask=overlay)
-                image.save(filepath)
+                if image is not None:
+                    try:
+                        # Overlay a play button if possible
+                        video_play_image = \
+                            preferences.GalleryPreferences.video_play_image
+                        if video_play_image:
+                            overlay = Image.open(video_play_image)
+                            # Downsize image_overlay if it is larger than image
+                            w1, h1 = image.size
+                            w2, h2 = overlay.size
+                            if w2 > w1 or h2 > h1:
+                                ratio1 = w1 / float(h1)
+                                ratio2 = w2 / float(h2)
+                                if ratio1 > ratio2:
+                                    resize_fract = h1 / float(h2)
+                                else:
+                                    resize_fract = w1 / float(w2)
 
-            # Finally set image
-            image = File(open(filepath, 'rb'))
-            image.name = filename
-            self.image = image
+                                overlay.resize(
+                                    w2 * resize_fract,
+                                    h2 * resize_fract,
+                                    Image.ANTIALIAS
+                                )
+
+                            image.paste(
+                                overlay,
+                                (int((w1 - w2) / 2.0), int((h1 - h2) / 2.0)),
+                                mask=overlay
+                            )
+                            image.save(filepath)
+
+                        # Finally set image
+                        image = File(open(filepath, 'rb'))
+                        image.name = filename
+                        self.image = image
+                    finally:
+                        os.remove(filepath)
 
         super(VideoEmbed, self).save(*args, **kwargs)
 

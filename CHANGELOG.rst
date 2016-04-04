@@ -1,6 +1,10 @@
 Changelog
 =========
 
+next
+----
+#. Ensure it is possible to override a video embed image.
+
 2.0.4
 -----
 #. Use requests library to fetch cover images.
