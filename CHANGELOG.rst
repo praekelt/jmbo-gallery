@@ -1,8 +1,8 @@
 Changelog
 =========
 
-next
-----
+2.0.5
+-----
 #. Ensure it is possible to override a video embed image.
 
 2.0.4
